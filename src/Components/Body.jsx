@@ -3,6 +3,7 @@ import { RestrauntList } from "../config";
 import { useState } from "react";
 import { useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterData(SerachText,Resturant){
     return Resturant.filter((resturant)=>resturant.data.name.toLowerCase().includes(SerachText.toLowerCase()))
@@ -48,7 +49,11 @@ const Body=(()=>{
             <div id="ResturantCards">
                 {
                     filterResturant.map((resturant)=>{
-                        return<ResturantCard {...resturant.data} key={resturant.data.id}/>
+                        return(
+                            <Link to={"/resturant/"+resturant.data.id} key={resturant.data.id} id="linkCard">
+                                <ResturantCard {...resturant.data}/>
+                            </Link>
+                        )
                     })
                 }
             </div>

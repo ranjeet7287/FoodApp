@@ -10,6 +10,7 @@ import Cart from "./Components/Cart";
 import Sigin from "./Components/SigIn";
 import Offer from "./Components/Offer";
 import Help from "./Components/Help";
+import ResturantMenu from "./Components/ResturantMenu";
 
 const AppLayout=(()=>{
     return(
@@ -50,6 +51,10 @@ const AppRouter=createBrowserRouter([
             {
                 path:"/cart",
                 element:<Cart/>
+            },
+            {
+                path:"/resturant/:id",
+                element:<ResturantMenu/>
             }
         ]
     }
