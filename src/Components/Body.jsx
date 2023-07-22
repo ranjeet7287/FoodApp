@@ -2,6 +2,7 @@ import ResturantCard from "./ResturantCard";
 import { RestrauntList } from "../config";
 import { useState } from "react";
 import { useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 function filterData(SerachText,Resturant){
     return Resturant.filter((resturant)=>resturant.data.name.toLowerCase().includes(SerachText.toLowerCase()))
@@ -25,11 +26,11 @@ const Body=(()=>{
         SetFilterResturant(json?.data?.cards[2]?.data?.data?.cards);
     }
 
-    return(
+    return (allResturant.length==0) ? <Shimmer/>:(
         <>
             <div id="sperate">
                 <input
-                id="search" 
+                id="search"
                 type="text" 
                 placeholder="Enter Your Food"
                 value={SerachText}

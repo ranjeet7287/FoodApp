@@ -81,3 +81,14 @@ body{
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.cardshimmer{
+    width: 15rem;
+    height: 15rem;
+    background-color: rgb(208, 208, 208);
+    margin: 2rem;
+}
+#shimmercards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
