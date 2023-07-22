@@ -66,3 +66,17 @@ body{
 #order-btn{
     padding: 0.3rem 0.5rem;
 }
+#search{
+    padding: 1rem 4rem;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+#search-btn{
+    padding: 1rem;
+    margin-left: 1rem;
+}
+#ResturantCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

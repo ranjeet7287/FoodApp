@@ -1,13 +1,13 @@
-
-const ResturantCard=(()=>{
+import { IMG_CDN_URL } from "../config";
+const ResturantCard=(({cloudinaryImageId,name,cuisines,avgRating,deliveryTime})=>{
     return(
         <div id="card">
-            <img alt="food-img" src="https://www.chinasichuanfood.com/wp-content/uploads/2015/09/biang-biang-noodles-13-500x500.webp"/>
-            <h2>Bawa Food</h2>
-            <p>North Indian,Fast Food</p>
+            <img alt="food-img" src={IMG_CDN_URL+cloudinaryImageId}/>
+            <h2>{name}</h2>
+            <p>{cuisines.join(',')}</p>
             <div id="card-info">
-                <span>⭐4.9</span>
-                <span>10 min</span>
+                <span>⭐{avgRating}</span>
+                <span>{deliveryTime}min</span>
                 <button id="order-btn">Order</button>
             </div>
         </div>
