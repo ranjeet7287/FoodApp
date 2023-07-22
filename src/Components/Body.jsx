@@ -1,6 +1,7 @@
 import ResturantCard from "./ResturantCard";
 import { RestrauntList } from "../config";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function filterData(SerachText,Resturant){
     return Resturant.filter((resturant)=>resturant.data.name.toLowerCase().includes(SerachText.toLowerCase()))
@@ -9,8 +10,20 @@ function filterData(SerachText,Resturant){
 const Body=(()=>{
 
     const [SerachText,SetSearchText]=useState("");
-    const [Resturant,setResturant]=useState(RestrauntList);
+    const [allResturant,allsetResturant]=useState([]);
+    const [filterResturant,SetFilterResturant]=useState([]);
 
+    useEffect(()=>{
+        getResturantCard();
+    },[])
+
+    async function getResturantCard(){
+        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7901474&lng=80.8892905&page_type=DESKTOP_WEB_LISTING");
+        const json=await data.json();
+        console.log(json);
+        allsetResturant(json?.data?.cards[2]?.data?.data?.cards);
+        SetFilterResturant(json?.data?.cards[2]?.data?.data?.cards);
+    }
 
     return(
         <>
@@ -25,15 +38,15 @@ const Body=(()=>{
                 }}
                 />
                 <button id="search-btn"  onClick={()=>{
-                    const data=filterData(SerachText,Resturant);
-                    setResturant(data);
+                    const data=filterData(SerachText,allResturant);
+                    SetFilterResturant(data);
                 }}>
                     Search
                 </button>
             </div>
             <div id="ResturantCards">
                 {
-                    Resturant.map((resturant)=>{
+                    filterResturant.map((resturant)=>{
                         return<ResturantCard {...resturant.data} key={resturant.data.id}/>
                     })
                 }

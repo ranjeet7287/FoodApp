@@ -4,7 +4,7 @@ const ResturantCard=(({cloudinaryImageId,name,cuisines,avgRating,deliveryTime})=
         <div id="card">
             <img alt="food-img" src={IMG_CDN_URL+cloudinaryImageId}/>
             <h2>{name}</h2>
-            <p>{cuisines.join(',')}</p>
+            <span>{cuisines.join(',')}</span>
             <div id="card-info">
                 <span>⭐{avgRating}</span>
                 <span>{deliveryTime}min</span>

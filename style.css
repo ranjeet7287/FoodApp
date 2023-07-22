@@ -54,6 +54,7 @@ body{
     flex-direction: column;
     gap: 0.4rem;
     margin: 2rem;
+    overflow: hidden;
 }
 #card >img{
     width: 10rem;
